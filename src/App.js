@@ -7,38 +7,35 @@ import { fetchedWeatherData } from './fetchedWeatherData';
 function App() {
   const [city,setCity]=useState("Jammu");
   const [weather,setWeather]=useState();
+  const [isLoading,setIsLoading]=useState(true);
   const inputRef=useRef('');
-  const enterKeyPressed=(e)=>{
-    if(e.key==="Enter")
+  const searchCity=()=>{
+    if((/^[a-zA-Z]*$/).test(inputRef.current.value))
     {
+      setIsLoading(true)
       setCity(inputRef.current.value)
     }
+    
   }
-  const buttonClick=()=>{
-    setCity(inputRef.current.value)
-  }
+ 
+  
   useEffect(()=>{
     (async()=>{
       inputRef.current.value=city;
-      const data = await fetchedWeatherData(city);
-      if(data.country!==undefined)
-      {
+      const data = await fetchedWeatherData(city,setWeather);
       setWeather(data)
-      }
-      else
-      {
-        setWeather(null)
-      }
+      console.log(weather)
+      setIsLoading(false)
+      
     })();
   },[city])
   return (
-    <div className="App container-fluid text-white vh-100" style={{backgroundImage:`url("https://img.freepik.com/free-vector/flat-style-clouds-blue-shades-background_1017-23284.jpg?size=626&ext=jpg&ga=GA1.1.792179136.1684565200&semt=ais")`,
-    backgroundSize:'cover'}}>
+    <div className="App container-fluid text-white vh-100" style={{backgroundColor:"darkblue"}}>
       <div className="row">
         <div className="col-md-4 my-5 m-auto">
           <h1>Weather App</h1>
-        <Searchbox inputRef={inputRef} enterKeyPressed={enterKeyPressed} buttonClick={buttonClick} />
-       { weather?<Displaydata weather={weather}/>:<h1 className='display-1 my-5'>City Not Found</h1>}
+        <Searchbox inputRef={inputRef} searchCity={searchCity} />
+       <Displaydata isLoading={isLoading} weather={weather}/>
         </div>
       </div>
       

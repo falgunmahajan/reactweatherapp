@@ -3,7 +3,7 @@ import axios from 'axios';
 const apiKey = "d42251a0a9d8f7e6b274dd1ecf3c1edc";
 const url = "https://api.openweathermap.org/data/2.5/weather";
 const iconUrl = (icon) => `https://openweathermap.org/img/wn/${icon}@2x.png`;
-const fetchedWeatherData = async (city) => {
+const fetchedWeatherData = async (city,setWeather) => {
     try{
         const res = await axios.get(`${url}?q=${city}&appid=${apiKey}&units=metric`);
         const { weather,
@@ -27,8 +27,7 @@ const fetchedWeatherData = async (city) => {
 
     }
     catch(err){
-        console.log(err.response.data)
-        return err.response.data
+        setWeather(null)
     }
   
 }
