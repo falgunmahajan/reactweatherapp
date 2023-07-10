@@ -30,7 +30,7 @@ function App() {
     })();
   },[city])
   return (
-    <div className="App container-fluid text-white vh-100" style={{backgroundColor:"darkblue"}}>
+    <div className="App container-fluid text-white vh-100" style={{backgroundColor:"#00008b99"}}>
       <div className="row">
         <div className="col-md-4 my-5 m-auto">
           <h1>Weather App</h1>
