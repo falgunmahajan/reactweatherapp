@@ -21,7 +21,7 @@ export default function Displaydata({weather,isLoading}) {
     )
   }
     return (
-      <div className="my-5 py-3" style={{backgroundColor:"#00000036"}}>
+      <div className="my-2 py-3" style={{backgroundColor:"#00000036"}}>
          <h3>{weather.name},{weather.country}</h3>
          <img className='my-2' src={weather.iconUrl} alt="" />
          <h5>{weather.description}</h5>
