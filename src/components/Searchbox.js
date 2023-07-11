@@ -9,7 +9,7 @@ export default function Searchbox({inputRef, searchCity}) {
   }
   return (
     <div className="d-flex ">
-    <input type="text" className="form-control my-5" ref={inputRef} onKeyDown={enterKeyPressed}/>
+    <input type="text" className="form-control my-5" ref={inputRef} onKeyDown={enterKeyPressed} placeholder='Enter city...'/>
     <button type="button" className="btn btn-danger ms-2 my-5" onClick={searchCity}>Search</button>
     </div>
   )

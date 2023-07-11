@@ -2,9 +2,10 @@ import React from 'react'
 import ClipLoader from "react-spinners/ClipLoader";
 import { FaWind } from "react-icons/fa";
 import { MdOutlineWaterDrop } from "react-icons/md";
-export default function Displaydata({weather,isLoading}) {
+export default function Displaydata({weather,isLoading,city}) {
   console.log(isLoading)
   console.log(weather)
+  if(city){
   if(isLoading)
   {
     return (
@@ -40,6 +41,6 @@ export default function Displaydata({weather,isLoading}) {
           </div>
       </div>
     )
-  
+    } 
 
 }
