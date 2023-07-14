@@ -8,16 +8,19 @@ function App() {
   const [city,setCity]=useState("");
   const [weather,setWeather]=useState("");
   const [isLoading,setIsLoading]=useState(false);
+  const [isValid,setIsValid] = useState(true)
   const inputRef=useRef('');
   const searchCity=()=>{
     if((/^[a-zA-Z]*$/).test(inputRef.current.value))
     {
       setIsLoading(true)
       setCity(inputRef.current.value)
+      setIsValid(true)
     }
     else{
       setIsLoading(false)
-      setCity("")
+      setCity(inputRef.current.value)
+      setIsValid(false)
     }
     
   }
@@ -42,7 +45,7 @@ function App() {
         <div className="col-md-4 my-5 m-auto">
           <h1>Weather App</h1>
         <Searchbox inputRef={inputRef} searchCity={searchCity} />
-       <Displaydata inputRef={inputRef} isLoading={isLoading} weather={weather} city={city}/>
+       <Displaydata inputRef={inputRef} isLoading={isLoading} weather={weather} city={city} valid={isValid}/>
         </div>
       </div>
       

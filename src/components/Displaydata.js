@@ -2,10 +2,10 @@ import React from 'react'
 import ClipLoader from "react-spinners/ClipLoader";
 import { FaWind } from "react-icons/fa";
 import { MdOutlineWaterDrop } from "react-icons/md";
-export default function Displaydata({weather,isLoading,city}) {
+export default function Displaydata({weather,isLoading,city,valid}) {
   console.log(isLoading)
   console.log(weather)
-  if(city){
+  if(city && valid){
   if(isLoading)
   {
     return (
@@ -42,5 +42,11 @@ export default function Displaydata({weather,isLoading,city}) {
       </div>
     )
     } 
-
+ if(city && !valid)
+ {
+  return(
+    <h1 className='display-1 my-5'> 
+     Please Enter a valid city</h1>
+  )
+ }
 }
