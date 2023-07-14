@@ -10,10 +10,14 @@ function App() {
   const [isLoading,setIsLoading]=useState(false);
   const inputRef=useRef('');
   const searchCity=()=>{
-    if((/^[a-zA-Z\s]*$/).test(inputRef.current.value))
+    if((/^[a-zA-Z]*$/).test(inputRef.current.value))
     {
       setIsLoading(true)
       setCity(inputRef.current.value)
+    }
+    else{
+      setIsLoading(false)
+      setCity("")
     }
     
   }
