@@ -29,7 +29,7 @@ function App() {
   useEffect(()=>{
     (async()=>{
       // inputRef.current.value=city;
-      if(city)
+      if(city && isValid)
       {
       setIsLoading(true)
       const data = await fetchedWeatherData(city,setWeather);
